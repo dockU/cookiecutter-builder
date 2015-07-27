@@ -1,0 +1,13 @@
+all: get build upload clean
+
+get:
+	git clone {{ cookiecutter.project.clone_url }} /opt/{{ cookiecutter.project.name }}
+
+build: /opt/{{ cookiecutter.project.name }}
+	cd /opt/{{ cookiecutter.project.name }} && {{ cookiecutter.build_cmd }}
+
+upload: /opt/{{ cookiecutter.project.name }}/{{ cookiecutter.out_path }}
+	curl -T /opt/{{ cookiecutter.project.name }}/{{ cookiecutter.out_path }} -u${BINTRAY_USER}:${BINTRAY_TOKEN} "https://api.bintray.com/content/${BINTRAY_USER}/${BINTRAY_REPO}/{{ cookiecutter.project.name }}/latest/{{ cookiecutter.project.name }}?publish=1"
+
+clean:
+	rm -rf /opt/{{ cookiecutter.project.name }}
