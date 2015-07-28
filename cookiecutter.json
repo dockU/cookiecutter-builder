@@ -1,17 +1,11 @@
 {
-    "bintray": {
-        "user": "jchen",
-        "token": "",
-        "repo": "docku"
-    },
-    "build_steps": [
-    ],
-    "dependencies": [
-    ],
-    "project": {
-        "clone_url": "",
-        "name": "",
-        "build_cmd": "",
-        "out_path": ""
-    }
+    "bintray_user": "jchen",
+    "bintray_token": "",
+    "bintray_repo": "docku",
+    "build_steps": [],
+    "dependencies": [],
+    "project_clone_url": "",
+    "project_name": "",
+    "project_build_cmd": "",
+    "out_path": ""
 }
