@@ -5,11 +5,9 @@ ENV BINTRAY_USER ""
 ENV BINTRAY_TOKEN ""
 ENV BINTRAY_REPO ""
 
-RUN pacman -Syu {% for pkg in cookiecutter.dependencies %}{{ pkg }} {% endfor %}--needed --noconfirm
+RUN pacman -Syu {{ cookiecutter.dependencies }}--needed --noconfirm
 
-{% for step in cookiecutter.build_steps %}
-RUN {{ step }}
-{% endfor %}
+RUN {{ cookiecutter.build_steps }}
 
 ADD build_makefile /root/Makefile
 CMD ["make", "-f", "/root/Makefile", "all"]
