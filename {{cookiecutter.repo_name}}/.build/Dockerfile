@@ -5,9 +5,9 @@ ENV BINTRAY_USER ""
 ENV BINTRAY_TOKEN ""
 ENV BINTRAY_REPO ""
 
-RUN pacman -Syu {% for pkg in cookiecutter._dependencies %}{{ pkg }} {% endfor %}--needed --noconfirm
+RUN pacman -Syu {% for pkg in cookiecutter.dependencies %}{{ pkg }} {% endfor %}--needed --noconfirm
 
-{% for step in cookiecutter._build_steps %}
+{% for step in cookiecutter.build_steps %}
 RUN {{ step }}
 {% endfor %}
 
