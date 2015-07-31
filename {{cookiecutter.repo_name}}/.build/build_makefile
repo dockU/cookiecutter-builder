@@ -4,7 +4,7 @@ get:
 	git clone {{ cookiecutter.project_clone_url }} /opt/{{ cookiecutter.project_name }}
 
 build: /opt/{{ cookiecutter.project_name }}
-	cd /opt/{{ cookiecutter.project_name }} && {{ cookiecutter.build_cmd }}
+	cd /opt/{{ cookiecutter.project_name }} && {{ cookiecutter.build_cmd }}; true
 
 upload: /opt/{{ cookiecutter.project_name }}/{{ cookiecutter.out_path }}
 	curl -T /opt/{{ cookiecutter.project_name }}/{{ cookiecutter.out_path }} -u${BINTRAY_USER}:${BINTRAY_TOKEN} "https://api.bintray.com/content/${BINTRAY_USER}/${BINTRAY_REPO}/{{ cookiecutter.project_name }}/latest/{{ cookiecutter.project_name }}?publish=1"
